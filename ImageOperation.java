@@ -19,13 +19,14 @@ class ImageOperation {
         //file input stream reader
         try {
             FileInputStream fis=new FileInputStream(file);
-
+    
+            /*Images contain binary data and hence, they are represented by Byte arrays*/
             byte []data=new byte[fis.available()];
             fis.read(data);
             int i=0;
             for(byte b:data){
                 System.out.println(b);
-                data[i]=(byte)(b^key);
+                data[i]=(byte)(b^key);          //Using XOR to encrypt/decrypt
                 i++;
             }
 
@@ -61,7 +62,7 @@ class ImageOperation {
         JTextField textField=new JTextField(10);
         textField.setFont(font);
 
-        button.addActionListener(e->{
+        button.addActionListener(e->{                       //Uses Lambda function
             System.out.println("Button Clicked!!");
             String text=textField.getText();
             int temp=Integer.parseInt(text);
